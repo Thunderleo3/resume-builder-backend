@@ -13,13 +13,15 @@ const PORT = process.env.PORT || 3000;
 await connectDB();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://resume-builder-frontend-tan-omega.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: "https://resume-builder-frontend-tan-omega.vercel.app",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
 
 app.get("/", (req, res) => res.send("Server is live..."));
 app.use("/api/users", userRouter);
